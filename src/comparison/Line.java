@@ -13,6 +13,10 @@ public class Line {
         Line other = (Line) obj;
         return Double.compare(this.length, other.length) == 0;
     }
+
+    public int compareTo(Line other) {
+        return Double.compare(this.length, other.length);
+    }
     double getLength() {
         return length;
     }
