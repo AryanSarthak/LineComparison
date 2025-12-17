@@ -1,23 +1,30 @@
 package comparison;
 
-public class Line {
-    private final double length;
+public class Line implements Comparable<Line> {
 
-    Line(int x1, int y1, int x2, int y2) {
-        this.length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    private final Point p1;
+    private final Point p2;
+
+    public Line(Point p1, Point p2) {
+        this.p1 = p1;
+        this.p2 = p2;
     }
+
+    double getLength() {
+        return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2)
+        );
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Line other = (Line) obj;
-        return Double.compare(this.length, other.length) == 0;
+        return Double.compare(this.getLength(), other.getLength()) == 0;
     }
 
+    @Override
     public int compareTo(Line other) {
-        return Double.compare(this.length, other.length);
-    }
-    double getLength() {
-        return length;
+        return Double.compare(this.getLength(), other.getLength());
     }
 }
